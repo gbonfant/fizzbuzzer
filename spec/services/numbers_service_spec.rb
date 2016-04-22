@@ -17,7 +17,8 @@ describe NumbersService do
     it 'paginates an array of Number' do
       numbers = described_class.new(page: 2).paginate
 
-      expect(numbers.first.value).to eq(25)
+      expect(numbers.size).to eq(25)
+      expect(numbers.first.value).to eq(26)
       expect(numbers.last.value).to eq(50)
     end
   end

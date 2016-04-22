@@ -22,7 +22,7 @@ class NumbersService
   end
 
   def lower_range
-    upper_range - RESULTS_PER_PAGE
+    (upper_range - RESULTS_PER_PAGE) + 1
   end
 
   def max_range
