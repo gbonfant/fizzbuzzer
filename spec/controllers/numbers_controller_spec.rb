@@ -16,5 +16,14 @@ describe NumbersController do
       expect(res).to include('numbers')
       expect(res['numbers'].first).to eq({ 'value' => 1, 'fizz_buzz' => nil })
     end
+
+    it 'returns the given page number and the given number of results' do
+      get :index, { page: 2, per_page: 4 }
+
+      res = JSON.parse(response.body)
+
+      # Second page with a page size of 4
+      expect(res['numbers'].first).to eq({ 'value' => 5, 'fizz_buzz' => 'buzz' })
+    end
   end
 end
