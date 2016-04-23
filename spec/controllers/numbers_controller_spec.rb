@@ -26,4 +26,7 @@ describe NumbersController do
       expect(res['numbers'].first).to eq({ 'value' => 5, 'fizz_buzz' => 'buzz' })
     end
   end
+
+  describe 'POST /add_favourite'
+  describe 'DELETE /remove_favourite'
 end

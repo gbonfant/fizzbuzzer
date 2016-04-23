@@ -5,6 +5,12 @@ class NumbersController < ApplicationController
     render json: numbers
   end
 
+  def add_favourite
+  end
+
+  def remove_favourite
+  end
+
   private
 
   def page
