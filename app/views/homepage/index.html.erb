@@ -1,6 +1,15 @@
 <div class="row">
   <h2>FizzBuzzer</h2>
 
+  <%= form_tag(root_path, method: :get, class: 'form-inline pagination-form') do -%>
+    <div class="form-group">
+      <%= label_tag('Results per page') %>
+      <%= text_field_tag('per_page', params[:per_page], class: 'form-control', placeholder: 100) %>
+    </div>
+
+    <%= submit_tag('Go', name: nil, class: 'btn btn-default') %>
+  <% end %>
+
   <div class="panel panel-default">
     <div class="panel-body">
       <%= react_component('NumbersList') %>

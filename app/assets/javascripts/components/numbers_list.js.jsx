@@ -6,7 +6,9 @@ var NumbersList = React.createClass({
   },
 
   componentDidMount: function() {
-    this.serverRequest = $.get('numbers', function(result) {
+    var apiUrl = 'numbers' + location.search;
+
+    this.serverRequest = $.get(apiUrl, function(result) {
       this.setState({ numbers: result.numbers });
     }.bind(this));
   },
