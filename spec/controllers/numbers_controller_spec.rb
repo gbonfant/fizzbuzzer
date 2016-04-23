@@ -27,6 +27,47 @@ describe NumbersController do
     end
   end
 
-  describe 'POST /add_favourite'
-  describe 'DELETE /remove_favourite'
+  describe 'POST /add_favourite' do
+    it 'creates a new user favourite for the given number' do
+      post :add_favourite, { number_value: 5 }
+
+      res = JSON.parse(response.body)
+
+      expect(res).to include('number_value' => 5)
+      expect(UserFavourite.count).to eq(1)
+    end
+
+    it 'returns the record for the given number if it already exists' do
+      UserFavourite.create(number_value: 5)
+
+      post :add_favourite, { number_value: 5 }
+
+      res = JSON.parse(response.body)
+
+      expect(res).to include('number_value' => 5)
+      expect(UserFavourite.count).to eq(1)
+    end
+  end
+
+  describe 'DELETE /remove_favourite' do
+    it 'deletes the user favourite record for the given number' do
+      UserFavourite.create(number_value: 1)
+
+      delete :remove_favourite, { number_value: 1 }
+
+      res = JSON.parse(response.body)
+
+      expect(res).to include('number_value' => 1)
+      expect(UserFavourite.count).to eq(0)
+    end
+
+    it 'returns an error message if the record was not found' do
+      delete :remove_favourite, { number_value: 1 }
+
+      res = JSON.parse(response.body)
+
+      expect(response.status).to eq(400)
+      expect(res).to include('error' => 'record not found')
+    end
+  end
 end
