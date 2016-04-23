@@ -1,5 +1,5 @@
 class NumbersService
-  RESULTS_PER_PAGE = 25
+  RESULTS_PER_PAGE = 100
 
   attr_reader :page
 
