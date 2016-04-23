@@ -1,12 +1,11 @@
 class NumbersService
-  RESULTS_PER_PAGE = 100
+  attr_reader :page, :per_page
 
-  attr_reader :page
-
-  def initialize(page: 1)
+  def initialize(page: 1, per_page: 100)
     raise MaxRangeExceededError if page > max_range
 
     @page = page
+    @per_page = per_page
   end
 
   def paginate
@@ -18,11 +17,11 @@ class NumbersService
   private
 
   def upper_range
-    page * RESULTS_PER_PAGE
+    page * per_page
   end
 
   def lower_range
-    (upper_range - RESULTS_PER_PAGE) + 1
+    (upper_range - per_page) + 1
   end
 
   def max_range
