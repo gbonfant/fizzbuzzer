@@ -12,4 +12,8 @@ class Number < ActiveModelSerializers::Model
   def fizz_buzz
     FizzBuzz.new.label_for(value)
   end
+
+  def favourite?
+    UserFavourite.find_by(number_value: value).present?
+  end
 end

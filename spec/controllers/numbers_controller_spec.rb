@@ -14,7 +14,9 @@ describe NumbersController do
       res = JSON.parse(response.body)
 
       expect(res).to include('numbers')
-      expect(res['numbers'].first).to eq({ 'value' => 1, 'fizz_buzz' => nil })
+      expect(res['numbers'].first).to eq({
+        'value' => 1, 'fizz_buzz' => nil, 'favourite' => false
+      })
     end
 
     it 'returns the given page number and the given number of results' do
@@ -23,7 +25,9 @@ describe NumbersController do
       res = JSON.parse(response.body)
 
       # Second page with a page size of 4
-      expect(res['numbers'].first).to eq({ 'value' => 5, 'fizz_buzz' => 'buzz' })
+      expect(res['numbers'].first).to eq({
+        'value' => 5, 'fizz_buzz' => 'buzz', 'favourite' => false
+      })
     end
   end
 

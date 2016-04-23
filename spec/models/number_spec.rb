@@ -22,4 +22,16 @@ describe Number do
       expect(value).to eq('fizz_buzz')
     end
   end
+
+  describe '#favourite?' do
+    it 'returns true when the user has favourited the number' do
+      UserFavourite.create(number_value: 5)
+
+      expect(described_class.new(5).favourite?).to eq(true)
+    end
+
+    it 'returns false when the user has not favourited the number' do
+      expect(described_class.new(5).favourite?).to eq(false)
+    end
+  end
 end
