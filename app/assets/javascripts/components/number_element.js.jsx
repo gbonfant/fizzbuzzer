@@ -7,11 +7,11 @@ var NumberElement = React.createClass({
 
   render: function() {
     return (
-      <div>
-        <span>{this.props.value}</span>
-        <span>{this.props.fizzbuzz}</span>
-        <span>{this.props.favourite}</span>
-      </div>
+      <tr>
+        <td>{this.props.value}</td>
+        <td>{this.props.fizzbuzz}</td>
+        <td>{this.props.favourite}</td>
+      </tr>
     )
   }
 });

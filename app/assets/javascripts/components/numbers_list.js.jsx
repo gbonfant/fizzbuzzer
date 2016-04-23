@@ -16,13 +16,22 @@ var NumbersList = React.createClass({
   },
 
   render: function() {
-    return (
-      <div>
-        {this.state.numbers.map(function(number) {
-          return <NumberElement key={number.value} value={number.value}
-            favourite={number.favourite} fizzbuzz={number.fizz_buzz} />;
-        })}
-      </div>
+    return(
+      <table className="table">
+        <thead>
+          <tr>
+            <th>Number</th>
+            <th>FizzBuzz?</th>
+            <th>Favourite</th>
+          </tr>
+        </thead>
+        <tbody>
+          {this.state.numbers.map(function(number) {
+            return <NumberElement key={number.value} value={number.value}
+              favourite={number.favourite} fizzbuzz={number.fizz_buzz} />;
+          })}
+        </tbody>
+      </table>
     )
   }
 });
