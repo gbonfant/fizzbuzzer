@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  # root 'numbers#index'
+  root 'homepage#index'
 
   resources :numbers, param: :value, only: [:index] do
     post :add_favourite
