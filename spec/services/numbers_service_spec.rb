@@ -28,4 +28,12 @@ describe NumbersService do
       expect(numbers.last.value).to eq(50)
     end
   end
+
+  describe '#max_range' do
+    it 'calculates the upper ceiling for valid pages' do
+      numbers = described_class.new(per_page: 1)
+
+      expect(numbers.max_range).to eq(100_000_000_000)
+    end
+  end
 end
