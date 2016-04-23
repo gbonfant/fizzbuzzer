@@ -10,7 +10,7 @@ var NumberElement = React.createClass({
       <tr>
         <td>{this.props.value}</td>
         <td>{this.props.fizzbuzz}</td>
-        <td><StarButton /></td>
+        <td><StarButton initialState={this.props.favourite} numberValue={this.props.value} /></td>
       </tr>
     )
   }
